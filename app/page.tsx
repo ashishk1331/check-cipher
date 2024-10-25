@@ -1,15 +1,16 @@
 "use client";
+import React from "react";
 
 export default function Home() {
 
-  async function checkCipher(formEvent) {
+  async function checkCipher(formEvent: React.FormEvent<HTMLFormElement>) {
     formEvent.preventDefault();
 
-    const formData = new FormData(formEvent.target);
+    const formData = new FormData(formEvent.target as HTMLFormElement);
     const plain_text = formData.get('decrypted-text');
     const day_number = formData.get('day-number');
 
-    let { check } = await fetch('/api/check', {
+    const { check } = await fetch('/api/check', {
       method: 'POST',
       body: JSON.stringify({ plain_text, day_number })
     }).then(res => res.json());
