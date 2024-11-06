@@ -14,8 +14,8 @@ export async function POST(request: Request) {
     const normalizeText = (text: string) => 
         text.replace(/\r?\n|\r/g, '').replace(/\\n/g, '').trim();
 
-    const referenceText = normalizeText(plain_text_map[day_number]);
-    const userText = normalizeText(plain_text);
+    const referenceText = normalizeText(plain_text_map[day_number]).toLowerCase();
+    const userText = normalizeText(plain_text).toLowerCase();
 
     const check = referenceText === userText;
 
